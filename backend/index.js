@@ -9,7 +9,9 @@ const recetasRoutes = require("./routes/recetas");
 const comentariosRoutes = require("./routes/comentarios");
 const healthRoutes = require("./routes/health");
 
-connectDB();
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+}
 
 const app = express();
 
