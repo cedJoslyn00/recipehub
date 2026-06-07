@@ -5,21 +5,22 @@ const Usuario = require('../models/Usuario');
 
 let mongoServer;
 let app;
+let server;
 
 beforeAll(async () => {
-  // Crear MongoDB en memoria
   mongoServer = await MongoMemoryServer.create();
   const mongoUri = mongoServer.getUri();
-  
-  // Conectar manualmente
   await mongoose.connect(mongoUri);
   
-  // Importar app DESPUÉS de conectar
   const { app: appInstance } = require('../index');
   app = appInstance;
+  
+  // Iniciar servidor en puerto aleatorio
+  server = app.listen(0);
 });
 
 afterAll(async () => {
+  if (server) server.close();
   await mongoose.disconnect();
   await mongoServer.stop();
 });

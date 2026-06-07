@@ -4,10 +4,10 @@
   "description": "API REST para RecipeHub - Plataforma colaborativa de recetas",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "jest --detectOpenHandles --forceExit"
-  },
+  "start": "node index.js",
+  "dev": "nodemon index.js",
+  "test": "jest --runInBand --detectOpenHandles --forceExit"
+},
   "keywords": [
     "recipes",
     "api",

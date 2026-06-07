@@ -26,10 +26,13 @@ app.use("/api", healthRoutes);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 4000;
-const server = app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
-  console.log(`📍 Ambiente: ${process.env.NODE_ENV || "development"}`);
-});
+let server = null;
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 4000;
+  server = app.listen(PORT, "0.0.0.0", () => {
+    console.log(` Servidor corriendo en puerto ${PORT}`);
+    console.log(`📍 Ambiente: ${process.env.NODE_ENV || "development"}`);
+  });
+}
 
 module.exports = { app, server };

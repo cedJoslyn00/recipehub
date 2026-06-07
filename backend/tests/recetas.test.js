@@ -6,6 +6,7 @@ const Receta = require('../models/Receta');
 
 let mongoServer;
 let app;
+let server;
 let token;
 let usuarioId;
 
@@ -16,6 +17,8 @@ beforeAll(async () => {
   
   const { app: appInstance } = require('../index');
   app = appInstance;
+  
+  server = app.listen(0);
 
   // Crear usuario de prueba
   const res = await request(app)
@@ -31,6 +34,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  if (server) server.close();
   await mongoose.disconnect();
   await mongoServer.stop();
 });
