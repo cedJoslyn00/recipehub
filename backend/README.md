@@ -18,15 +18,15 @@ Es un proyecto educativo para el examen de **Programación 4**, que demuestra co
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    CLIENTE (Browser)                 │
+│                    CLIENTE (Browser)                │
 │              React App en app.recetashub-cr.xyz     │
 └────────────────────┬────────────────────────────────┘
                      │ HTTPS (Puerto 443)
 ┌────────────────────▼────────────────────────────────┐
-│              NGINX (Reverse Proxy)                   │
-│         Balancea tráfico a contenedores              │
-├──────────────────────────────────────────────────────┤
-│  Certificado SSL: Let's Encrypt (Renovación Auto)    │
+│              NGINX (Reverse Proxy)                  │
+│         Balancea tráfico a contenedores             │
+├─────────────────────────────────────────────────────┤
+│  Certificado SSL: Let's Encrypt (Renovación Auto)   │
 │  Dominio: recetashub-cr.xyz + api.recetashub-cr.xyz │
 └────────────────────┬────────────────────────────────┘
                      │
