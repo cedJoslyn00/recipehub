@@ -24,10 +24,15 @@ jobs:
         run: |
           cd backend
           npm test
+        env:
+          MONGO_URI: mongodb://localhost:27017/recipehub-test
+          JWT_SECRET: test-secret-for-github-actions
+          NODE_ENV: test
 
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.0.3
