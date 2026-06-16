@@ -15,7 +15,20 @@ if (process.env.NODE_ENV !== "test") {
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:4173",
+      "https://app.recetashub-cr.xyz",
+      "http://app.recetashub-cr.xyz",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
